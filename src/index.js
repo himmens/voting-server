@@ -9,4 +9,5 @@ store.dispatch({
   type: 'SET_ENTRIES',
   entries: require('./entries.json')
 });
-store.dispatch({type: 'NEXT'}); //do next action
+// do next action
+store.dispatch({type: 'NEXT'});
