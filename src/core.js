@@ -1,9 +1,21 @@
 import { List, Map } from 'immutable';
 
+export const INITIAL_STATE = Map();
+
+/**
+ * Setups entries list
+ * @param state
+ * @param entries
+ */
 export function setEntries(state, entries) {
   return state.set('entries', List(entries));
 }
 
+/**
+ * Takes next two entries from state and adds to state['vote']['pair']
+ * Moves winner entry to the end of entries list
+ * @param state
+ */
 export function next(state) {
   const entries = state.get('entries')
     .concat(getWinners(state.get('vote')));
@@ -19,9 +31,15 @@ export function next(state) {
   }
 }
 
-export function vote(state, entry) {
-  return state.updateIn(
-    ['vote', 'tally', entry],
+/**
+ * Does vote action.
+ * Increments counter for voited entry in state['vote']['tally'][entry]
+ * @param voteState
+ * @param entry
+ */
+export function vote(voteState, entry) {
+  return voteState.updateIn(
+    ['tally', entry],
     0,
     tally => tally + 1
   );
