@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node index.js",
     "test": "mocha --require babel-core/register ./test/launcher.js \"test/**/*.js\"",
     "test:watch": "npm run test -- --watch"
   },
